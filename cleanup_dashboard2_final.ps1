@@ -1,5 +1,5 @@
 param(
-    [string]$Path = "$PSScriptRoot\CQ Produto Acabado - Procytrat 2026 - Dashboard2-graficos-moveis.xlsm"
+    [string]$Path = "$PSScriptRoot\CQ Produto Acabado - Procytrat 2026 - Dashboard2-sem-simulados.xlsm"
 )
 
 $excel = $null

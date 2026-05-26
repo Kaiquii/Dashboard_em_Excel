@@ -1,3 +1,53 @@
+param(
+    [string]$Source = "$PSScriptRoot\CQ Produto Acabado - Procytrat 2026 - Dashboard2-base-sem-graficos-sem-simulados.xlsm",
+    [string]$Output = "$PSScriptRoot\CQ Produto Acabado - Procytrat 2026 - Dashboard2-sem-simulados.xlsm"
+)
+
+function XlColor([string]$Hex) {
+    $r = [Convert]::ToInt32($Hex.Substring(0, 2), 16)
+    $g = [Convert]::ToInt32($Hex.Substring(2, 2), 16)
+    $b = [Convert]::ToInt32($Hex.Substring(4, 2), 16)
+    return $r + (256 * $g) + (65536 * $b)
+}
+
+function Unlock-ChartObject($chartObject) {
+    try { $chartObject.Locked = $false } catch {}
+    try { $chartObject.Placement = 3 } catch {}
+    try { $chartObject.ShapeRange.Locked = $false } catch {}
+    try { $chartObject.ShapeRange.LockAspectRatio = 0 } catch {}
+}
+
+function New-NativeChartObject($targetWs, $tempWs, $box, [int]$chartType) {
+    $left = $box.Left + 8
+    $top = $box.Top + 8
+    $width = $box.Width - 16
+    $height = $box.Height - 16
+
+    $co = $tempWs.ChartObjects().Add(20, 20, $width, $height)
+    $co.Chart.ChartType = $chartType
+    $co.Chart.Location(2, $targetWs.Name) | Out-Null
+    Start-Sleep -Milliseconds 300
+
+    $newCo = $targetWs.ChartObjects($targetWs.ChartObjects().Count)
+    $newCo.Left = $left
+    $newCo.Top = $top
+    $newCo.Width = $width
+    $newCo.Height = $height
+    return $newCo
+}
+
+function Add-BarChart($ws, $tempWs, [string]$anchorRange, [string]$categoryRange, [string]$valueRange, [string]$colorHex, [int]$chartType) {
+    $box = $ws.Range($anchorRange)
+    $co = New-NativeChartObject $ws $tempWs $box $chartType
+    Unlock-ChartObject $co
+
+    $chart = $co.Chart
+    $chart.ChartType = $chartType
+    $chart.HasTitle = $false
+    $chart.HasLegend = $false
+    $chart.PlotVisibleOnly = $false
+    $chart.ChartArea.Font.Name = "Segoe UI"
+    $chart.ChartArea.Font.Size = 8
     try { $chart.ChartArea.Format.Fill.ForeColor.RGB = XlColor "FFFFFF" } catch {}
     try { $chart.ChartArea.Format.Line.ForeColor.RGB = XlColor "D7DEE8" } catch {}
     try { $chart.PlotArea.Format.Fill.ForeColor.RGB = XlColor "FFFFFF" } catch {}
@@ -54,10 +104,10 @@ function Add-StatusChart($ws, $tempWs) {
 
     $series = $chart.SeriesCollection().NewSeries()
     $series.Name = "Lotes"
-    $series.Values = $ws.Range("N51:N54")
-    $series.XValues = $ws.Range("M51:M54")
+    $series.Values = $ws.Range("N51:N53")
+    $series.XValues = $ws.Range("M51:M53")
 
-    $colors = @("16A34A", "D97706", "BE123C", "7C3AED")
+    $colors = @("16A34A", "D97706", "BE123C")
     for ($i = 1; $i -le $colors.Count; $i++) {
         try { $series.Points($i).Format.Fill.ForeColor.RGB = XlColor $colors[$i - 1] } catch {}
     }
@@ -70,7 +120,7 @@ function Add-StatusChart($ws, $tempWs) {
     $series.DataLabels().Font.Name = "Segoe UI"
     $series.DataLabels().Font.Size = 8
     $series.DataLabels().Font.Color = XlColor "334155"
-    for ($i = 1; $i -le 4; $i++) {
+    for ($i = 1; $i -le 3; $i++) {
         try {
             $value = [double]$ws.Cells(50 + $i, 14).Value2
             if ($value -le 0) { $series.Points($i).HasDataLabel = $false }
