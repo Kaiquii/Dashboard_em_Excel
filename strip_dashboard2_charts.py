@@ -3,8 +3,8 @@ from pathlib import Path
 import openpyxl
 
 
-SOURCE = Path("CQ Produto Acabado - Procytrat 2026 - Dashboard2-profissional-ajustada.xlsm")
-OUTPUT = Path("CQ Produto Acabado - Procytrat 2026 - Dashboard2-base-sem-graficos.xlsm")
+SOURCE = Path("CQ Produto Acabado - Procytrat 2026 - Dashboard2-profissional-sem-simulados.xlsm")
+OUTPUT = Path("CQ Produto Acabado - Procytrat 2026 - Dashboard2-base-sem-graficos-sem-simulados.xlsm")
 
 
 def main():
