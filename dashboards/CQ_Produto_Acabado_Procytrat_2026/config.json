@@ -5,5 +5,15 @@
   "abaDashboard": "Dashboard2",
   "anoPadrao": 2026,
   "linhasPorProduto": 500,
-  "saidaFinal": "outputs\\CQ_Produto_Acabado_Procytrat_2026\\CQ Produto Acabado - Procytrat 2026 - Dashboard2-sem-simulados.xlsm"
+  "saidaFinal": "outputs\\CQ_Produto_Acabado_Procytrat_2026\\CQ Produto Acabado - Procytrat 2026 - Dashboard2-sem-simulados.xlsm",
+  "etapas": [
+    "01_build_dashboard.py",
+    "02_strip_charts.py",
+    "03_recreate_native_charts.ps1",
+    "04_cleanup_final.ps1"
+  ],
+  "limparSaida": [
+    "CQ Produto Acabado - Procytrat 2026 - Dashboard2-profissional-sem-simulados.xlsm",
+    "CQ Produto Acabado - Procytrat 2026 - Dashboard2-base-sem-graficos-sem-simulados.xlsm"
+  ]
 }

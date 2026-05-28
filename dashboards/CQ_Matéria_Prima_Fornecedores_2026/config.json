@@ -1,0 +1,14 @@
+{
+  "id": "CQ_Matéria_Prima_Fornecedores_2026",
+  "nome": "CQ Matéria Prima - Fornecedores 2026",
+  "entrada": "inputs\\CQ_Matéria_Prima_Fornecedores_2026\\CQ Matéria Prima - Fornecedores 2026.xlsm",
+  "saidaFinal": "outputs\\CQ_Matéria_Prima_Fornecedores_2026\\CQ Matéria Prima - Fornecedores 2026 - Dashboard.xlsm",
+  "abaDashboard": "Dashboard2",
+  "anoPadrao": 2026,
+  "etapas": [
+    "01_build_dashboard.py",
+    "02_strip_charts.py",
+    "03_recreate_native_charts.ps1",
+    "04_cleanup_final.ps1"
+  ]
+}

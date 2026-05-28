@@ -2,16 +2,16 @@
 
 Para gerar uma planilha, coloque a planilha base/original em `inputs/`.
 
-Exemplo, se for regenerar o dashboard de Procytrat:
+Exemplo:
 
 ```text
-inputs\CQ_Produto_Acabado_Procytrat_2026\CQ Produto Acabado - Procytrat 2026.xlsm
+inputs\CQ_Matéria_Prima_Fornecedores_2026\CQ Matéria Prima - Fornecedores 2026.xlsm
 ```
 
 Rode este comando na raiz do projeto:
 
 ```powershell
-.\gerar_dashboard.ps1
+python .\gerar_dashboard.py CQ_Matéria_Prima_Fornecedores_2026
 ```
 
 O arquivo gerado vai sair aqui:

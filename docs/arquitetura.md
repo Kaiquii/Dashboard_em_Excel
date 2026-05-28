@@ -29,7 +29,40 @@ Isso significa que os proximos dashboards devem seguir o mesmo padrao visual ger
 
 O que muda de uma planilha para outra deve ser principalmente a parte de dados: abas de origem, nomes dos campos, formulas, metricas, tabelas auxiliares, filtros e graficos especificos de cada arquivo.
 
-Em outras palavras: manter o mesmo "padrãozinho" visual, adaptando a inteligencia do dashboard aos dados de cada planilha.
+Em outras palavras: manter o mesmo "padraozinho" visual, adaptando a inteligencia do dashboard aos dados de cada planilha.
+
+## Regras obrigatorias dos dashboards
+
+Estas regras existem por causa das dificuldades que tivemos no dashboard `CQ Materia Prima - Fornecedores 2026`. Elas devem ser seguidas em todos os proximos dashboards:
+
+1. Graficos nao podem ser fixos, imagens ou desenhos travados. Eles devem ser graficos padrao/nativos do Excel e devem poder ser movidos manualmente dentro da planilha.
+2. O dashboard nao pode depender de dados fixos colados pelo Python. Cards, tabelas auxiliares, rankings, indicadores e graficos devem usar formulas do Excel ligadas as abas de origem, para atualizar quando os dados das planilhas forem alterados.
+3. O campo de ano deve ser um filtro visivel no topo do dashboard, e todo o dashboard deve respeitar esse ano selecionado: indicadores, tabelas, rankings, vencimentos e graficos.
+
+## Regra para graficos
+
+Todo grafico gerado para uma planilha deve atender estes pontos:
+
+- deve ser um grafico padrao/nativo do Excel, nao imagem ou desenho travado;
+- deve ser movivel/editavel dentro do Excel;
+- deve ter rotulos de dados visiveis;
+- grafico de barras/colunas deve mostrar valores;
+- grafico de rosca/pizza deve mostrar percentual e/ou categoria;
+- se um grafico criado pelo `openpyxl` nao ficar movivel no Excel, ele deve ser recriado ou ajustado por uma etapa Excel/COM;
+- antes de considerar um dashboard pronto, abrir no Excel e confirmar que os graficos podem ser movidos de lugar.
+
+Essa regra vale para todos os dashboards novos.
+
+## Regra para filtros e formulas
+
+Todo dashboard deve continuar dinamico dentro do Excel.
+
+- O ano base deve ser um filtro visivel no topo, seguindo o padrao `ANO` / `base` / `Selecionado`, com o valor selecionado na celula `W3` quando o layout usar esse padrao.
+- Indicadores, tabelas auxiliares e graficos nao devem ser apenas valores fixos gerados pelo Python.
+- O Python deve montar a estrutura, mas os numeros do dashboard devem vir de formulas do Excel ligadas as abas de origem.
+- Quando os dados das abas da planilha forem alterados e o Excel recalcular, o dashboard tambem deve mudar.
+- Graficos devem apontar para ranges alimentados por formulas, nao para valores colados manualmente.
+- Tabelas auxiliares podem ficar ocultas, mas precisam existir para deixar claro de onde os indicadores e graficos saem.
 
 ## Estrutura obrigatoria
 
