@@ -11,4 +11,12 @@ if (-not (Test-Path -LiteralPath $runner)) {
     throw "Dashboard nao encontrado ou sem run.ps1: $Dashboard"
 }
 
-& powershell -ExecutionPolicy Bypass -File $runner -Python $Python
+if ([string]::IsNullOrWhiteSpace($Python)) {
+    & powershell -ExecutionPolicy Bypass -File $runner
+} else {
+    & powershell -ExecutionPolicy Bypass -File $runner -Python $Python
+}
+
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}

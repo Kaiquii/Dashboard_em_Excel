@@ -1,7 +1,7 @@
 {
   "id": "CQ_Produto_Acabado_Procytrat_2026",
   "nome": "CQ Produto Acabado - Procytrat 2026",
-  "entrada": "C:\\Users\\kaiqu\\Downloads\\CQ Produto Acabado - Procytrat 2026.xlsm",
+  "entrada": "inputs\\CQ_Produto_Acabado_Procytrat_2026\\CQ Produto Acabado - Procytrat 2026.xlsm",
   "abaDashboard": "Dashboard2",
   "anoPadrao": 2026,
   "linhasPorProduto": 500,

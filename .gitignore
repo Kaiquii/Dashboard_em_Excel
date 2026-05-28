@@ -5,6 +5,8 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.coverage
+htmlcov/
 
 # Virtual environments
 .venv/
@@ -18,15 +20,43 @@ env/
 
 # Generated dashboard files
 outputs/
+.tmp/
+tmp/
+temp/
+
+# Input Excel files stay local
+inputs/**/*.xlsm
+inputs/**/*.xlsx
+inputs/**/*.xls
+inputs/**/*.xlsb
 
 # Excel/Office temporary files
 ~$*
+*.~*
 *.tmp
 *.temp
+*.bak
+*.backup
+*.xlk
+*.laccdb
+*.lock
+
+# Generated spreadsheet exports outside outputs
+*.xlsx
+*.xlsm
+*.xls
+*.xlsb
+!referencias/**/*.xlsm
+!referencias/**/*.xlsx
+!referencias/**/*.xls
 
 # Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # OS metadata
 Thumbs.db
 Desktop.ini
+.DS_Store

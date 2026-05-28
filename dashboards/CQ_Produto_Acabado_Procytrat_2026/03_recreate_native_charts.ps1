@@ -1,7 +1,9 @@
 param(
-    [string]$Source = "$((Split-Path -Parent (Split-Path -Parent $PSScriptRoot)))\outputs\CQ_Produto_Acabado_Procytrat_2026\CQ Produto Acabado - Procytrat 2026 - Dashboard2-base-sem-graficos-sem-simulados.xlsm",
+    [string]$Source = "$((Split-Path -Parent (Split-Path -Parent $PSScriptRoot)))\.tmp\CQ_Produto_Acabado_Procytrat_2026\CQ Produto Acabado - Procytrat 2026 - Dashboard2-base-sem-graficos-sem-simulados.xlsm",
     [string]$Output = "$((Split-Path -Parent (Split-Path -Parent $PSScriptRoot)))\outputs\CQ_Produto_Acabado_Procytrat_2026\CQ Produto Acabado - Procytrat 2026 - Dashboard2-sem-simulados.xlsm"
 )
+
+$ErrorActionPreference = "Stop"
 
 function XlColor([string]$Hex) {
     $r = [Convert]::ToInt32($Hex.Substring(0, 2), 16)

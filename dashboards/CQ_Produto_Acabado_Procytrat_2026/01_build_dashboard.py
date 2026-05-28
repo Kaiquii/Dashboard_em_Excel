@@ -10,11 +10,12 @@ from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
 
 
-INPUT = Path(r"C:\Users\kaiqu\Downloads\CQ Produto Acabado - Procytrat 2026.xlsm")
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parents[1]
-OUTPUT_DIR = PROJECT_ROOT / "outputs" / SCRIPT_DIR.name
-OUTPUT = OUTPUT_DIR / "CQ Produto Acabado - Procytrat 2026 - Dashboard2-profissional-sem-simulados.xlsm"
+DASHBOARD_ID = SCRIPT_DIR.name
+INPUT = PROJECT_ROOT / "inputs" / DASHBOARD_ID / "CQ Produto Acabado - Procytrat 2026.xlsm"
+WORK_DIR = PROJECT_ROOT / ".tmp" / DASHBOARD_ID
+OUTPUT = WORK_DIR / "CQ Produto Acabado - Procytrat 2026 - Dashboard2-profissional-sem-simulados.xlsm"
 
 ROWS_PER_PRODUCT = 500
 HELPER_FIRST_ROW = 2
@@ -648,12 +649,11 @@ def build():
     ws.page_setup.fitToWidth = 1
     ws.page_setup.fitToHeight = 0
 
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    WORK_DIR.mkdir(parents=True, exist_ok=True)
     wb.save(OUTPUT)
     return OUTPUT, len(source_sheets)
 
 
 if __name__ == "__main__":
     output, count = build()
-    print(f"Arquivo gerado: {output.resolve()}")
-    print(f"Abas de produto usadas: {count}")
+    print(f"Etapa 1 concluida. Abas de produto usadas: {count}")

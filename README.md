@@ -8,6 +8,16 @@ Leia a arquitetura antes de adicionar novas planilhas:
 
 [docs/arquitetura.md](docs/arquitetura.md)
 
+Para gerar uma planilha, siga:
+
+[docs/como_rodar.md](docs/como_rodar.md)
+
+Comando rapido:
+
+```powershell
+.\gerar_dashboard.ps1
+```
+
 ## Estrutura
 
 - `dashboards/`: uma pasta por planilha/dashboard.
