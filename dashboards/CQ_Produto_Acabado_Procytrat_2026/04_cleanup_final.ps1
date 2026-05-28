@@ -1,5 +1,5 @@
 param(
-    [string]$Path = "$PSScriptRoot\CQ Produto Acabado - Procytrat 2026 - Dashboard2-sem-simulados.xlsm"
+    [string]$Path = "$((Split-Path -Parent (Split-Path -Parent $PSScriptRoot)))\outputs\CQ_Produto_Acabado_Procytrat_2026\CQ Produto Acabado - Procytrat 2026 - Dashboard2-sem-simulados.xlsm"
 )
 
 $excel = $null

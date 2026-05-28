@@ -1,6 +1,6 @@
 param(
-    [string]$Source = "$PSScriptRoot\CQ Produto Acabado - Procytrat 2026 - Dashboard2-base-sem-graficos-sem-simulados.xlsm",
-    [string]$Output = "$PSScriptRoot\CQ Produto Acabado - Procytrat 2026 - Dashboard2-sem-simulados.xlsm"
+    [string]$Source = "$((Split-Path -Parent (Split-Path -Parent $PSScriptRoot)))\outputs\CQ_Produto_Acabado_Procytrat_2026\CQ Produto Acabado - Procytrat 2026 - Dashboard2-base-sem-graficos-sem-simulados.xlsm",
+    [string]$Output = "$((Split-Path -Parent (Split-Path -Parent $PSScriptRoot)))\outputs\CQ_Produto_Acabado_Procytrat_2026\CQ Produto Acabado - Procytrat 2026 - Dashboard2-sem-simulados.xlsm"
 )
 
 function XlColor([string]$Hex) {
@@ -134,6 +134,7 @@ $excel = $null
 $wb = $null
 
 try {
+    New-Item -ItemType Directory -Force -Path (Split-Path -Parent $Output) | Out-Null
     Copy-Item -LiteralPath $Source -Destination $Output -Force
     $resolved = (Resolve-Path -LiteralPath $Output).Path
 
