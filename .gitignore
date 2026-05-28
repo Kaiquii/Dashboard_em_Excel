@@ -24,12 +24,6 @@ outputs/
 tmp/
 temp/
 
-# Input Excel files stay local
-inputs/**/*.xlsm
-inputs/**/*.xlsx
-inputs/**/*.xls
-inputs/**/*.xlsb
-
 # Excel/Office temporary files
 ~$*
 *.~*
@@ -40,15 +34,6 @@ inputs/**/*.xlsb
 *.xlk
 *.laccdb
 *.lock
-
-# Generated spreadsheet exports outside outputs
-*.xlsx
-*.xlsm
-*.xls
-*.xlsb
-!referencias/**/*.xlsm
-!referencias/**/*.xlsx
-!referencias/**/*.xls
 
 # Logs
 *.log

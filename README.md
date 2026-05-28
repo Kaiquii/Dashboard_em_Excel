@@ -12,6 +12,10 @@ Para gerar uma planilha, siga:
 
 [docs/como_rodar.md](docs/como_rodar.md)
 
+Para lembrar onde guardar cada tipo de planilha:
+
+[docs/pastas.md](docs/pastas.md)
+
 Comando rapido:
 
 ```powershell

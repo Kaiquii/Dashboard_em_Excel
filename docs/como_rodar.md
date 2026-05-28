@@ -1,6 +1,8 @@
 # Como rodar
 
-Coloque a planilha base/original aqui:
+Para gerar uma planilha, coloque a planilha base/original em `inputs/`.
+
+Exemplo, se for regenerar o dashboard de Procytrat:
 
 ```text
 inputs\CQ_Produto_Acabado_Procytrat_2026\CQ Produto Acabado - Procytrat 2026.xlsm
