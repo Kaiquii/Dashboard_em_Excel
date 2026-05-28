@@ -14,6 +14,23 @@ Cada dashboard pode ter regras, formulas, abas, graficos e tratamentos proprios.
 - Gerar uma nova versao da planilha em `outputs/`.
 - Manter cada automacao facil de encontrar, rodar e alterar.
 
+## Referencia visual
+
+A primeira planilha trabalhada, `CQ Produto Acabado - Procytrat 2026`, deve ser usada como referencia de aparencia para os proximos dashboards.
+
+Isso significa que os proximos dashboards devem seguir o mesmo padrao visual geral:
+
+- layout organizado em paineis;
+- cards de indicadores no topo;
+- paleta de cores e estilo visual semelhantes;
+- tabelas de apoio com visual consistente;
+- graficos posicionados e formatados no mesmo estilo;
+- dashboard como primeira aba ou em posicao de destaque, quando fizer sentido.
+
+O que muda de uma planilha para outra deve ser principalmente a parte de dados: abas de origem, nomes dos campos, formulas, metricas, tabelas auxiliares, filtros e graficos especificos de cada arquivo.
+
+Em outras palavras: manter o mesmo "padrãozinho" visual, adaptando a inteligencia do dashboard aos dados de cada planilha.
+
 ## Estrutura obrigatoria
 
 Cada planilha/dashboard deve ficar em sua propria pasta dentro de `dashboards/`:
