@@ -64,6 +64,22 @@ Todo dashboard deve continuar dinamico dentro do Excel.
 - Graficos devem apontar para ranges alimentados por formulas, nao para valores colados manualmente.
 - Tabelas auxiliares podem ficar ocultas, mas precisam existir para deixar claro de onde os indicadores e graficos saem.
 
+## Regra para planilhas com macros
+
+Planilhas `.xlsm` precisam continuar com as macros e objetos originais.
+
+- Assuma que toda planilha `.xlsm` pode ter aba de menu, botoes, macros e objetos invisiveis/importantes.
+- Nunca entregar uma planilha final sem `vbaProject.bin`.
+- Nao remover botoes, desenhos, imagens, formas ou objetos das abas originais, principalmente abas como `MENU`.
+- Nao recriar, limpar ou sobrescrever abas de menu/macros. O script deve mexer na aba do dashboard e preservar as demais abas.
+- Cuidado ao salvar `.xlsm` com `openpyxl`: ele pode apagar desenhos/objetos que usa para menus e botoes.
+- Quando o dashboard for criado com `openpyxl`, a etapa seguinte deve preservar/restaurar os desenhos originais antes de abrir no Excel/COM.
+- Antes de considerar pronto, comparar o arquivo original com o final e validar que manteve VBA, desenhos/imagens originais, aba `MENU` funcional e graficos nativos do dashboard.
+- Se uma planilha tiver menus parecidos com os dashboards anteriores, tratar esses menus como parte intocavel da planilha.
+- Ao restaurar uma aba `MENU` a partir da planilha original, copiar pelo Excel/COM e conferir os botoes/formas com macro vinculada.
+- Depois de copiar o `MENU`, revisar as acoes dos botoes (`OnAction`) para nao ficarem apontando para a planilha original, arquivo temporario ou caminho externo. As macros devem chamar a propria planilha final.
+- Validar no final: quantidade de formas no `MENU`, quantidade de formas com macro vinculada, VBA presente e dashboard intacto.
+
 ## Estrutura obrigatoria
 
 Cada planilha/dashboard deve ficar em sua propria pasta dentro de `dashboards/`:

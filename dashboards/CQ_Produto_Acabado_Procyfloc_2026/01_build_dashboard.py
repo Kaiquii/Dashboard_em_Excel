@@ -315,7 +315,7 @@ def build():
     merge(
         ws,
         "B6:C7",
-        '=COUNTIFS($F$67:$F$86,">0")',
+        '=COUNTA($E$67:$E$86)',
         COLORS["nav2"],
         Font(name="Segoe UI", color="FFFFFF", bold=True, size=22),
         Alignment(horizontal="center", vertical="center"),
@@ -325,7 +325,7 @@ def build():
     merge(
         ws,
         "B8:C8",
-        "produtos ativos",
+        "produtos cadastrados",
         COLORS["nav2"],
         Font(name="Segoe UI", color="B8C4D6", bold=True, size=9),
         Alignment(horizontal="center", vertical="center"),
@@ -397,7 +397,7 @@ def build():
         COLORS["amber"],
         "0.0%",
     )
-    card(ws, "U5:W9", "PRODUTOS ATIVOS", '=COUNTIFS($F$67:$F$86,">0")', COLORS["purple"], "0")
+    card(ws, "U5:W9", "PRODUTOS", '=COUNTA($E$67:$E$86)', COLORS["purple"], "0")
 
     panel(ws, "E12:N27", "Top 10 por quantidade")
     panel(ws, "P12:W27", "Ranking detalhado")

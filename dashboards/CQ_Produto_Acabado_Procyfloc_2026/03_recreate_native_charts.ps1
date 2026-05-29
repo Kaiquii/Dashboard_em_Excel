@@ -167,16 +167,18 @@ function Add-QuantityChart($ws, $tempWs, [string]$anchorRange, [string]$category
 
     Invoke-ComRetry { $series.ApplyDataLabels() } | Out-Null
     $labels = $series.DataLabels()
-    $labels.ShowSeriesName = $false
-    $labels.ShowCategoryName = $false
-    $labels.ShowValue = $true
-    $labels.NumberFormatLocal = '#.##0 "kg"'
-    $labels.Font.Name = "Segoe UI"
-    $labels.Font.Size = 8
-    $labels.Font.Color = XlColor "334155"
+    try { $labels.ShowSeriesName = $false } catch {}
+    try { $labels.ShowCategoryName = $false } catch {}
+    try { $labels.ShowValue = $true } catch {}
+    try { $labels.NumberFormatLocal = '#.##0 "kg"' } catch {}
+    try { $labels.Font.Name = "Segoe UI" } catch {}
+    try { $labels.Font.Size = 8 } catch {}
+    try { $labels.Font.Color = XlColor "334155" } catch {}
     try { $labels.Position = 2 } catch {}
 
-    for ($i = 1; $i -le $series.Points().Count; $i++) {
+    $pointCount = 0
+    try { $pointCount = Invoke-ComRetry { $series.Points().Count } } catch {}
+    for ($i = 1; $i -le $pointCount; $i++) {
         try {
             $value = [double]$ws.Range($valueRange).Cells($i, 1).Value2
             if ($value -le 0) { $series.Points($i).HasDataLabel = $false }
@@ -227,16 +229,19 @@ function Add-StatusChart($ws, $tempWs) {
 
     Invoke-ComRetry { $series.ApplyDataLabels() } | Out-Null
     $labels = $series.DataLabels()
-    $labels.ShowSeriesName = $false
-    $labels.ShowCategoryName = $true
-    $labels.ShowPercentage = $true
-    $labels.ShowValue = $false
-    $labels.Separator = " "
-    $labels.Font.Name = "Segoe UI"
-    $labels.Font.Size = 8
-    $labels.Font.Color = XlColor "334155"
+    try { $labels.ShowSeriesName = $false } catch {}
+    try { $labels.ShowCategoryName = $true } catch {}
+    try { $labels.ShowPercentage = $true } catch {}
+    try { $labels.ShowValue = $false } catch {}
+    try { $labels.Separator = " " } catch {}
+    try { $labels.Font.Name = "Segoe UI" } catch {}
+    try { $labels.Font.Size = 8 } catch {}
+    try { $labels.Font.Color = XlColor "334155" } catch {}
 
-    for ($i = 1; $i -le 3; $i++) {
+    $pointCount = 0
+    try { $pointCount = Invoke-ComRetry { $series.Points().Count } } catch {}
+    $pointLimit = [Math]::Min(3, $pointCount)
+    for ($i = 1; $i -le $pointLimit; $i++) {
         try {
             $value = [double]$ws.Cells(50 + $i, 14).Value2
             if ($value -le 0) { $series.Points($i).HasDataLabel = $false }
@@ -252,6 +257,9 @@ $wb = $null
 
 try {
     New-Item -ItemType Directory -Force -Path (Split-Path -Parent $Output) | Out-Null
+    if (Test-Path -LiteralPath $safeComDir) {
+        Remove-Item -LiteralPath $safeComDir -Recurse -Force -ErrorAction SilentlyContinue
+    }
     New-Item -ItemType Directory -Force -Path $safeComDir | Out-Null
     $workingFile = Join-Path $safeComDir "procyfloc-dashboard.xlsm"
     Copy-Item -LiteralPath $Source -Destination $workingFile -Force
