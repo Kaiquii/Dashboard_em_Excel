@@ -1,5 +1,5 @@
 param(
-    [string]$Dashboard = "CQ_Produto_Acabado_Procyfloc_2026",
+    [string]$Dashboard = ("CQ_Mat" + [char]0x00E9 + "ria_Prima_2026"),
     [string]$Python = ""
 )
 

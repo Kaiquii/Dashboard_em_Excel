@@ -1,0 +1,14 @@
+{
+  "id": "CQ_Mat\u00e9ria_Prima_2026",
+  "nome": "CQ Mat\u00e9ria Prima 2026",
+  "entrada": "inputs\\CQ_Mat\u00e9ria_Prima_2026\\CQ Mat\u00e9ria Prima - 2026.xlsm",
+  "saidaFinal": "outputs\\CQ_Mat\u00e9ria_Prima_2026\\CQ Mat\u00e9ria Prima - 2026 - Dashboard.xlsm",
+  "abaDashboard": "Dashboard2",
+  "anoPadrao": 2026,
+  "etapas": [
+    "01_build_dashboard.py",
+    "02_strip_charts.py",
+    "03_recreate_native_charts.ps1",
+    "04_cleanup_final.ps1"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "CQ_Produto_Acabado_Procyclean_2026",
+  "nome": "CQ Produto Acabado - Procyclean 2026",
+  "entrada": "inputs\\CQ_Produto_Acabado_Procyclean_2026\\CQ Produto Acabado - Procyclean 2026.xlsm",
+  "abaDashboard": "Dashboard2",
+  "anoPadrao": 2026,
+  "linhasPorProduto": 500,
+  "saidaFinal": "outputs\\CQ_Produto_Acabado_Procyclean_2026\\CQ Produto Acabado - Procyclean 2026 - Dashboard.xlsm",
+  "etapas": [
+    "01_build_dashboard.py",
+    "02_strip_charts.py",
+    "03_recreate_native_charts.ps1",
+    "04_cleanup_final.ps1"
+  ],
+  "limparSaida": [
+    "CQ Produto Acabado - Procyclean 2026 - Dashboard-openpyxl.xlsm",
+    "CQ Produto Acabado - Procyclean 2026 - Dashboard-base-sem-graficos.xlsm"
+  ]
+}
