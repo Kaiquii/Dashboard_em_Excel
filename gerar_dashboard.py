@@ -5,7 +5,7 @@ import subprocess
 import sys
 
 
-DASHBOARD_PADRAO = "CQ_Matéria_Prima_Fornecedores_2026"
+DASHBOARD_PADRAO = "CQ_Produto_Acabado_Procyfloc_2026"
 
 
 def run(command):
